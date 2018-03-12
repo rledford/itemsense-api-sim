@@ -1,0 +1,10 @@
+{
+	"name": "itemsense-api-sim",
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "^4.16.2"
+	}
+}

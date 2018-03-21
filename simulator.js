@@ -55,7 +55,7 @@ class Simulator {
       }
 
       if (index + query.pageSize - 1 < data.items.length) {
-        data.nextPageMarker = query.pageMarker ? query.pageMarker++ : 1;
+        data.nextPageMarker = query.pageMarker ? query.pageMarker + 1 : 1;
       }
 
       data.items = data.items.slice(index, index + query.pageSize);

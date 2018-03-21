@@ -12,12 +12,12 @@ module.exports = app => {
     res.json({ token: '123456-123456-123456-123456' });
   });
 
-  app.get('/itemsense/configuration/authentication/v1/users/authenticate', (req, res) => {
+  app.get('/itemsense/configuration/v1/users/authenticate', (req, res) => {
     res.json({
       name: 'Admin',
       roles: ['Admin']
     })
-  })
+  });
 
   app.put('/itemsense/data/v1/items/queues', (req, res) => {
     res.json({

@@ -38,6 +38,29 @@ class Simulator {
       };
     });
 
+    if (!query.pageSize) {
+      query.pageSize = 100;
+    } else {
+      query.pageSize = Number.parseInt(query.pageSize);
+    }
+
+    if (query.pageMarker) {
+      query.pageMarker = Number.parseInt(query.pageMarker);
+    }
+
+    if (query.pageSize < data.items.length) {
+      let index = 0;
+      if (query.pageMarker) {
+        index = query.pageSize * query.pageMarker
+      }
+
+      if (index + query.pageSize - 1 < data.items.length) {
+        data.nextPageMarker = query.pageMarker ? query.pageMarker++ : 1;
+      }
+
+      data.items = data.items.slice(index, index + query.pageSize);
+    }
+
     return data;
   }
 }

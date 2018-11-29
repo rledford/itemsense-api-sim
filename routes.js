@@ -4,6 +4,13 @@ module.exports = app => {
   app.get('/', (req, res) => {
     res.send('<h1>ItemSense API Simulator</h1>');
   });
+  app.get('/itemsense/now', (req, res) => {
+    let now = new Date();
+    res.json({
+      iso: now.toISOString(),
+      timestamp: now.getTime()
+    });
+  });
   app.get('/itemsense/data/v1/items/show', (req, res) => {
     res.json(sim.showItems(req.query || {}));
   });
@@ -151,10 +158,10 @@ module.exports = app => {
         [{
           id: '12e1kj12e',
           status: 'RUNNING',
-          readerName: ['SpeedwayR-00-00-01', 'SpeedwayR-00-00-02'],
+          readerNames: ['SpeedwayR-00-00-01', 'SpeedwayR-00-00-02'],
           failedReaderName: [],
-          creationTime: now,
-          lastActivity: now,
+          creationTime: new Date(Date.now() - 125000).toISOString(),
+          lastActivity: new Date().toISOString(),
           activityDuration: Math.floor(Math.random() * 1000),
           errorOccured: false,
           errors: [],
